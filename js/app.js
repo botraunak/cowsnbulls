@@ -42,27 +42,27 @@ $(document).ready(function (){
 	var cows = 0; // Cows
 	var bulls = 0; // Bulls
 
-	// Loop to initialize input fields
-	for (var i = 0; i < word.length; i++) {
-		$('.word').append('<input name="letter'+i+'"class="word_input" maxLength="1" />');
-	};
+	
+	$('.word').append('<input name="word"class="word_input" maxlength="4"/>');
+	
 
 	// Check on Submit Function
 	$('#submit').click(function (){
 		cows = 0;
 		bulls = 0;
+		var user_word = $('input[name="word"]').val();
 		for(i = 0; i < word.length; i++)
 		{
 			
-			if($('input[name="letter'+i+'"]').val().length != 1)
+			if(user_word.length != word.length)
 			{
-				give_alert("You need to have exactly one letter in all submit fields");
+				give_alert("You need to have exactly 4 letters in input");
 				break;
 			}
 
 			for (var j = 0; j < word.length; j++)
 			{
-				if($('input[name="letter'+i+'"]').val().toLowerCase() == word[j])
+				if(user_word[i].toLowerCase() == word[j])
 				{
 					if(i == j)
 					{
@@ -93,7 +93,7 @@ $(document).ready(function (){
 		}
 		else
 		{
-			$('#heading').text('Cows: '+cows+' and Bulls: '+bulls);
+			$('#heading').text('Cows: '+cows+' Bulls: '+bulls);
 		}
 
 		

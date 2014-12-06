@@ -9,9 +9,6 @@ body
 	font-family: Raleway;
 	overflow-x: hidden;
 }
-.app_wrapper{
-	width: 100%;
-}
 .alert{
 	background-color: #FCB03C;
 	position: absolute;
@@ -45,7 +42,7 @@ body
 #heading
 {
 	font-family: Raleway;
-	font-size: 60px;
+	font-size: 5em;
 	font-weight: 100;
 
 }
@@ -93,15 +90,16 @@ body
 	background-color: #E29012;
 }
 .word_input{
-	width: 30px;
-	height: 50px;
-	margin-left: 20px;
-	margin-right: 20px;
+	width: 300px;
+	height: 20%;
+	text-align: center;
 	background-color: transparent;
 	border: none;
-	border-bottom: 3px solid white;
+	border: 3px solid  white;
 	font-size: 40px;
 	color: white;
+	padding-top: 2%;
+	padding-bottom: 2%;
 }
 .word_input:focus{
 	outline: none;
@@ -127,3 +125,11 @@ body
 	height: 100px;
 	padding-top: 60px;
 }
+
+@media screen and (max-width: 490px)
+{
+	#heading{
+		font-size: 3em;
+	}
+}
+
