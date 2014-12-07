@@ -1,4 +1,28 @@
+function toggle_history(){
+	console.log("Function is working");
 	
+	var display = $("#history_sidebar").css("display");
+	console.log(display);
+	if(display=="block")
+	{
+		
+		$("#history_sidebar").addClass('fadeOutUpBig');
+		$("#history_sidebar").fadeOut();
+	}
+	else
+	{
+		$("#history_sidebar").removeClass('fadeOutUpBig').show().addClass('fadeInDownBig');
+	}
+}	
+
+function enter(e)
+{
+	if (e.keyCode == 13)
+	{
+		$('#submit').click();
+	}
+}
+
 
 $(document).ready(function (){
 	
@@ -38,46 +62,51 @@ $(document).ready(function (){
 		$('.alert').addClass('shake');
 	}
 
-	var tries = 30; // Number of tries
+	var tries = 0; // Number of tries
 	var cows = 0; // Cows
 	var bulls = 0; // Bulls
 
 	
-	$('.word').append('<input name="word"class="word_input" maxlength="4"/>');
+	$('.word').append('<input name="word"class="word_input" maxlength="4" onkeypress="enter(event);"/>');
 	
 
 	// Check on Submit Function
-	$('#submit').click(function (){
+	$('#submit').click(function submit_func(){
 		cows = 0;
 		bulls = 0;
-		var user_word = $('input[name="word"]').val();
-		for(i = 0; i < word.length; i++)
+		if(tries<9)
 		{
+			var user_word = $('input[name="word"]').val();
+			for(i = 0; i < word.length; i++)
+			{
 			
-			if(user_word.length != word.length)
-			{
-				give_alert("You need to have exactly 4 letters in input");
-				break;
-			}
-
-			for (var j = 0; j < word.length; j++)
-			{
-				if(user_word[i].toLowerCase() == word[j])
+				if(user_word.length != word.length)
 				{
-					if(i == j)
-					{
-						bulls++;
-						console.log("bull for : "+ word[j]);
-					}
-					else
-					{
-						cows++;
-						console.log("cow for : "+ word[j]);
-					}
+					give_alert("You need to have exactly 4 letters in input");
 					break;
 				}
-			}				
-		}
+
+				for (var j = 0; j < word.length; j++)
+				{
+					if(user_word[i].toLowerCase() == word[j])
+					{
+						if(i == j)
+						{
+							bulls++;
+							console.log("bull for : "+ word[j]);
+						}
+						else
+						{	
+							cows++;
+							console.log("cow for : "+ word[j]);
+						}
+						break;
+					}
+				}				
+			}
+
+
+		$('#history_sidebar').append('<div class="item"><span>Word: </span><span class>'+user_word+'</span><br><span>Cows: </span><span>'+cows+' </span><span>Bulls: </span><span>'+bulls+'</span></div>');
 		if (cows > 0 || bulls > 0)
 		{
 			correct_answer();
@@ -96,13 +125,29 @@ $(document).ready(function (){
 			$('#heading').text('Cows: '+cows+' Bulls: '+bulls);
 		}
 
-		
+		}
+		else
+		{
+			$('#heading').html('Sorry you lost! <br> Refresh page to play again');
+			$('.word_input').fadeOut();	
+			$('#submit').fadeOut();
+		}
+
+		tries++;
 	});
-
-
+	
+	// Clearing input field on focus
+	$('input[name="word"]').on('click focusin', function() {
+    this.value = '';
+	});
+	
 	// Close Alert button
 	$('.close').click(function(){
 		$('.alert').fadeOut();
 		$(this).toggle();
 	});
+
+
+
 });
+

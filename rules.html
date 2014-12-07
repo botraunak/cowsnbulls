@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<title>Rules</title>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		
+	<script src="js/animate.js"></script>
+	<meta name="viewport" content="width=device-width,initial-scale =1.0">
+		
+</head>
+<body>
+	<div class="app_wrapper">
+		<br/><br/>
+		<header class="heading" align="center">
+				<h1 id="heading">RULES: </h1>
+			</header>
+
+			<br/><br/><br/><br/>
+		<div>	
+		<p class="para">
+			Aim is to find the 4-letter word the computer has thought of.
+			<br> 
+			Bulls = number of common letters in the correct position between guess and word.
+			<br> 
+			Cows = common letters in the incorrect position between your guess word.
+			<br>
+			<br>
+			Example: Word assumed by computer: 
+			<br>WORD Guess 1: CAVE Clue: 0B 0C (no common letters)
+			<br> Guess 2: DOOR Clue: 1B 2C (bull for 'O' and cows for 'D' and 'R')
+			<br> Guess 3: ODOR Clue: 0B 3C (cows for 'O', 'D' and 'R') 
+			<br>Guess 4: WOOD Clue: 3B 0C (bulls for 'W', 'O' and 'D') 
+			<br>Guess 5: WORD -- Yay, you did it!!
+		</p>
+		</div>
+	</div>
+
+	<footer class="footer" align="center">
+			<h5>&copy; Raunak Sett 2014</h5>
+		</footer>
+
+		<a href="index.html">
+		<div class="rules">
+			<img src="img/back.png" width="30px" height ="30px">
+		</div>
+		</a>
+</body>
+</html>
